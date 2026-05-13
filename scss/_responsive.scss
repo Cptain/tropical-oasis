@@ -1,0 +1,122 @@
+@media (max-width: 900px) {
+  nav {
+    padding: 14px 24px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    height: auto;
+  }
+
+  .hero-left {
+    width: 100%;
+    height: auto;
+    padding: 64px 32px 64px;
+  }
+
+  .hero-title br {
+    display: none;
+  }
+
+  .hero-cta {
+    gap: 10px;
+
+    .btn {
+      flex: 1;
+      text-align: center;
+      padding: 12px 16px;
+    }
+  }
+
+  .hero-right {
+    display: none;
+  }
+
+  .hero-grid-overlay {
+    display: none;
+  }
+
+  .welcome,
+  .difference {
+    padding: 60px 32px;
+  }
+
+  .menu-description {
+    padding: 48px 32px;
+  }
+
+  .tagline-band,
+  .contact-section,
+  .sauces-block {
+    grid-template-columns: 1fr;
+  }
+
+  .tagline-band-text {
+    padding: 48px 32px;
+  }
+
+  .menu-block {
+    grid-template-columns: 1fr;
+
+    .menu-img {
+      min-height: 220px;
+      order: -1;
+    }
+
+    .menu-text {
+      order: 1;
+    }
+
+    &.img-right,
+    &.img-left {
+      .menu-img  { order: -1; }
+      .menu-text { order: 1; }
+    }
+  }
+
+  .difference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+
+  footer {
+    padding: 40px 24px 20px;
+  }
+
+  .photo-strip {
+    grid-template-columns: 1fr 1fr;
+    height: 400px;
+  }
+
+  .catering {
+    padding: 52px 24px;
+  }
+
+  p {
+    max-width: 55ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-info p,
+  .contact-detail p,
+  .contact-detail a,
+  .footer-brand p,
+  .hero-desc {
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .catering-form {
+    &__row {
+      grid-template-columns: 1fr;
+    }
+  }
+}

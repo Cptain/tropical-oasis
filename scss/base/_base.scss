@@ -1,0 +1,86 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: var(--dark);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+p, h1, h2, h3, h4, h5, h6, li, span, a, label {
+  text-wrap: pretty;
+}
+
+.section-tag {
+  font-family: 'Raleway', sans-serif;
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 52px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--orange), var(--gold));
+  margin: 20px auto;
+}
+
+.divider-left {
+  margin-left: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-family: 'Raleway', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.btn-sunset {
+  background: linear-gradient(135deg, var(--orange), var(--coral));
+  color: #fff;
+  border: 2px solid transparent;
+
+  &:hover {
+    background: transparent;
+    color: var(--orange);
+    border-color: var(--orange);
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--text-light);
+  border: 2px solid rgba(245, 221, 192, 0.4);
+
+  &:hover {
+    background: rgba(245, 221, 192, 0.08);
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+}
