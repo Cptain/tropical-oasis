@@ -56,6 +56,28 @@
   }
 }
 
+.hours-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  td {
+    font-size: 14px;
+    color: var(--text-light);
+    padding: 7px 0;
+    line-height: 1.4;
+
+    &:last-child {
+      text-align: right;
+      color: var(--text-muted);
+      padding-left: 24px;
+    }
+  }
+
+  tr + tr td {
+    border-top: 1px solid rgba(240, 168, 39, 0.08);
+  }
+}
+
 .contact-cta {
   margin-top: 32px;
 }

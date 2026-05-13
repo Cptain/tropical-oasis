@@ -20,8 +20,8 @@
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#menu">Menu</a></li>
-      <li><a href="#catering">Catering</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="#catering">Catering</a></li>
     </ul>
     <a href="#catering" class="nav-order-btn">Request Catering</a>
   </nav>
@@ -38,6 +38,13 @@
     </div>
     <div class="hero-right">
       <img class="main-img" src="images/01.webp" alt="Signature spiced meat dish" width="1200" height="1500" fetchpriority="high" decoding="async" />
+    </div>
+    <div class="hero-wave" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <path class="wave-path wave-path--back" d="M0,55 C200,5 440,80 720,45 C1000,10 1240,75 1440,50 L1440,80 L0,80 Z" />
+        <path class="wave-path wave-path--mid" d="M0,45 C160,80 360,10 600,48 C840,80 1080,10 1300,45 C1380,55 1420,42 1440,45 L1440,80 L0,80 Z" />
+        <path class="wave-path wave-path--front" d="M0,58 C160,15 360,78 600,55 C840,28 1040,72 1240,52 C1350,38 1410,62 1440,55 L1440,80 L0,80 Z" />
+      </svg>
     </div>
   </section>
 
@@ -130,7 +137,7 @@
       <div class="menu-img"><img src="images/01.webp" alt="Curry main entree" width="800" height="1000" loading="lazy" decoding="async" /></div>
     </div>
 
-    <div class="sauces-block">
+    <div class="menu-block img-left">
       <div class="menu-img menu-img--tall"><img src="images/08.webp" alt="Veggie sides and roti" width="800" height="1000" loading="lazy" decoding="async" /></div>
       <div class="menu-text">
         <h3>Traditional Veggie Sides &amp; Roti</h3>
@@ -143,19 +150,19 @@
         <div class="menu-item"><div class="menu-item-name">Dhalpuri Roti <small>single</small></div><span class="menu-item-price">$4.00</span></div>
       </div>
     </div>
+  </section>
 
-    <div class="weekend-specials">
-      <h3 class="weekend-specials__title">Weekend Specials &mdash; Saturday &amp; Sunday Only</h3>
-      <div class="weekend-specials__grid">
+  <div class="weekend-specials">
+    <h3 class="weekend-specials__title">Weekend Specials &mdash; Saturday &amp; Sunday Only</h3>
+    <div class="weekend-specials__grid">
         <div class="menu-item"><div class="menu-item-name">Bake &amp; Saltfish <small>fluffy fried dough with savory hand-flaked saltfish</small></div><span class="menu-item-price">$7.00</span></div>
         <div class="menu-item"><div class="menu-item-name">Fish &amp; Bread <small>crispy fried fish on thick-cut island bread</small></div><span class="menu-item-price">$7.00</span></div>
         <div class="menu-item"><div class="menu-item-name">Fish Cake <small>2pcs — saltfish &amp; cassava, golden-fried</small></div><span class="menu-item-price">$5.00</span></div>
         <div class="menu-item"><div class="menu-item-name">Fish Cake <small>4pcs</small></div><span class="menu-item-price">$8.00</span></div>
         <div class="menu-item"><div class="menu-item-name">Fish Cake Wrap <small>4pcs in warm Dhalpuri Roti</small></div><span class="menu-item-price">$12.00</span></div>
         <div class="menu-item"><div class="menu-item-name">Boil &amp; Fried Provision with Saltfish <small>cassava, sweet potato, plantain, eddoes &amp; yams</small></div><span class="menu-item-price">$17.00</span></div>
-      </div>
     </div>
-  </section>
+  </div>
 
   <div class="photo-strip">
     <div><img src="images/02.webp" alt="Roti with curry" width="700" height="875" loading="lazy" decoding="async" /></div>
@@ -171,7 +178,15 @@
     <div class="contact-info">
       <h2>Find Us</h2>
       <div class="contact-detail"><div class="label">Address</div><p>1197 Birchmount Road<br>Scarborough, ON M1P 2C1</p></div>
-      <div class="contact-detail"><div class="label">Hours</div><p>Mon &ndash; Fri: 11am &ndash; 9pm<br>Saturday: 10am &ndash; 10pm<br>Sunday: 10am &ndash; 8pm</p></div>
+      <div class="contact-detail"><div class="label">Hours</div>
+        <table class="hours-table">
+          <tbody>
+            <tr><td>Monday &ndash; Friday</td><td>11am &ndash; 9pm</td></tr>
+            <tr><td>Saturday</td><td>10am &ndash; 10pm</td></tr>
+            <tr><td>Sunday</td><td>10am &ndash; 8pm</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="contact-detail"><div class="label">Phone</div><a href="tel:+14167557099">416-755-7099</a></div>
       <div class="contact-detail"><div class="label">Weekend Specials</div><p>Bake &amp; Saltfish, Fish Cakes &amp; more<br>Available Saturday &amp; Sunday only</p></div>
       <div class="contact-cta"><a href="#catering" class="btn btn-sunset">Book Catering</a></div>

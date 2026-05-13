@@ -58,28 +58,30 @@ p, h1, h2, h3, h4, h5, h6, li, span, a, label {
   text-decoration: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.25s;
+  transition: background-position 0.4s ease, color 0.25s, border-color 0.25s;
 }
 
 .btn-sunset {
-  background: linear-gradient(135deg, var(--orange), var(--coral));
+  background: linear-gradient(135deg, var(--orange), var(--coral), var(--purple), var(--orange));
+  background-size: 300% 300%;
+  background-position: 0% 50%;
   color: #fff;
   border: 2px solid transparent;
 
   &:hover {
-    background: transparent;
-    color: var(--orange);
-    border-color: var(--orange);
+    background-position: 25% 50%;
   }
 }
 
 .btn-outline {
-  background: transparent;
+  background: linear-gradient(135deg, transparent, rgba(245, 221, 192, 0.1), rgba(240, 168, 39, 0.15), transparent);
+  background-size: 300% 300%;
+  background-position: 0% 50%;
   color: var(--text-light);
   border: 2px solid rgba(245, 221, 192, 0.4);
 
   &:hover {
-    background: rgba(245, 221, 192, 0.08);
+    background-position: 25% 50%;
     border-color: var(--gold);
     color: var(--gold);
   }

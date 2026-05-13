@@ -1,9 +1,72 @@
 .hero {
   position: relative;
   height: 100vh;
+  height: 100dvh;
   max-height: 100vh;
+  max-height: 100dvh;
   overflow: hidden;
   padding-top: clamp(60px, calc(5vw + 28px), 80px);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: clamp(96px, 14vw, 180px);
+    background: linear-gradient(to bottom, transparent, var(--dark2));
+    pointer-events: none;
+    z-index: 9;
+  }
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(48px, 6vw, 88px);
+  pointer-events: none;
+  z-index: 10;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.wave-path {
+  fill: var(--dark2);
+
+  &--back {
+    opacity: 0.3;
+    animation: wave-drift-back 5s ease-in-out infinite alternate;
+  }
+
+  &--mid {
+    opacity: 0.6;
+    animation: wave-drift-mid 4s ease-in-out infinite alternate-reverse;
+  }
+
+  &--front {
+    animation: wave-drift-front 3.5s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes wave-drift-back {
+  from { d: path("M0,55 C200,5 440,80 720,45 C1000,10 1240,75 1440,50 L1440,80 L0,80 Z"); }
+  to   { d: path("M0,20 C180,75 400,0 720,35 C1040,70 1280,5 1440,25 L1440,80 L0,80 Z"); }
+}
+
+@keyframes wave-drift-mid {
+  from { d: path("M0,45 C160,80 360,10 600,48 C840,80 1080,10 1300,45 C1380,55 1420,42 1440,45 L1440,80 L0,80 Z"); }
+  to   { d: path("M0,30 C200,5 380,75 640,35 C900,5 1120,70 1320,32 C1400,18 1430,55 1440,35 L1440,80 L0,80 Z"); }
+}
+
+@keyframes wave-drift-front {
+  from { d: path("M0,58 C160,15 360,78 600,55 C840,28 1040,72 1240,52 C1350,38 1410,62 1440,55 L1440,80 L0,80 Z"); }
+  to   { d: path("M0,38 C200,78 380,8 620,40 C860,76 1060,12 1260,42 C1360,62 1415,28 1440,38 L1440,80 L0,80 Z"); }
 }
 
 .hero-left {
@@ -77,6 +140,29 @@
   display: flex;
   gap: 16px;
   flex-wrap: wrap;
+
+  .btn-sunset {
+    background: linear-gradient(135deg, #fff, var(--text-light), #d4c4a8, #b8a88a);
+    background-size: 300% 300%;
+    background-position: 0% 50%;
+    color: var(--dark);
+    border-color: transparent;
+
+    &:hover {
+      background-position: 25% 50%;
+    }
+  }
+
+  .btn-outline {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+
+    &:hover {
+      background-position: 100% 50%;
+      border-color: #fff;
+      color: #fff;
+    }
+  }
 }
 
 .hero-right {

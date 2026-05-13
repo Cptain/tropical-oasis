@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+
 .welcome {
   background: var(--dark2);
   padding: 100px 80px;
@@ -39,7 +41,9 @@
   }
 
   &-text {
-    background: linear-gradient(160deg, var(--dark3) 0%, var(--dark2) 100%);
+    background:
+      $sand-texture repeat,
+      linear-gradient(160deg, var(--dark3) 0%, var(--dark2) 100%);
     display: flex;
     flex-direction: column;
     justify-content: center;
