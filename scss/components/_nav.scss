@@ -55,13 +55,9 @@ nav {
   }
 }
 
-@property --nav-btn-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-@keyframes nav-btn-rotate {
-  to { --nav-btn-angle: 360deg; }
+@keyframes nav-btn-spin {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .nav-order-btn {
@@ -69,36 +65,27 @@ nav {
   z-index: 0;
   padding: 2px;
   border-radius: 8px;
-  background: conic-gradient(
-    from var(--nav-btn-angle),
-    var(--orange) 0deg,
-    var(--gold) 40deg,
-    transparent 60deg,
-    transparent 300deg,
-    var(--orange) 360deg
-  );
-  animation: nav-btn-rotate 2.5s linear infinite;
+  overflow: hidden;
   text-decoration: none;
   cursor: pointer;
   display: inline-block;
 
-  &::before {
+  &::after {
     content: '';
     position: absolute;
-    inset: -6px;
-    border-radius: 14px;
+    width: 400px;
+    height: 400px;
+    top: 50%;
+    left: 50%;
     background: conic-gradient(
-      from var(--nav-btn-angle),
       var(--orange) 0deg,
       var(--gold) 40deg,
       transparent 60deg,
       transparent 300deg,
       var(--orange) 360deg
     );
-    filter: blur(14px);
-    opacity: 0.65;
+    animation: nav-btn-spin 2.5s linear infinite;
     z-index: -1;
-    animation: nav-btn-rotate 2.5s linear infinite;
   }
 
   span {
@@ -207,36 +194,27 @@ nav {
     z-index: 0;
     padding: 2px;
     border-radius: 8px;
-    background: conic-gradient(
-      from var(--nav-btn-angle),
-      var(--orange) 0deg,
-      var(--gold) 40deg,
-      transparent 60deg,
-      transparent 300deg,
-      var(--orange) 360deg
-    );
-    animation: nav-btn-rotate 2.5s linear infinite;
+    overflow: hidden;
     text-decoration: none;
     cursor: pointer;
     display: inline-block;
 
-    &::before {
+    &::after {
       content: '';
       position: absolute;
-      inset: -6px;
-      border-radius: 14px;
+      width: 400px;
+      height: 400px;
+      top: 50%;
+      left: 50%;
       background: conic-gradient(
-        from var(--nav-btn-angle),
         var(--orange) 0deg,
         var(--gold) 40deg,
         transparent 60deg,
         transparent 300deg,
         var(--orange) 360deg
       );
-      filter: blur(14px);
-      opacity: 0.65;
+      animation: nav-btn-spin 2.5s linear infinite;
       z-index: -1;
-      animation: nav-btn-rotate 2.5s linear infinite;
     }
 
     span {
