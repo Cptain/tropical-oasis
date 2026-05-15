@@ -38,6 +38,7 @@
     max-height: 700px;
     object-fit: cover;
     display: block;
+    background: #000;
   }
 
   &-text {
@@ -86,6 +87,10 @@
     gap: clamp(24px, 4vw, 48px);
     margin: clamp(32px, 4vw, 60px) auto 0;
     max-width: 960px;
+
+    .diff-card--highlight {
+      grid-column: 1 / -1;
+    }
   }
 
   p.intro {
@@ -124,6 +129,58 @@
     font-size: 16px;
     line-height: 1.5;
     margin: 0 auto;
+  }
+}
+
+.diff-card--highlight {
+  border: 1px solid var(--gold);
+  background: rgba(197, 143, 75, 0.06);
+  border-radius: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: center;
+  gap: clamp(20px, 3vw, 40px);
+  padding: clamp(28px, 4vw, 48px);
+  text-align: left;
+
+  .diff-icon {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: auto;
+      height: 100%;
+      min-height: 80px;
+      max-height: 140px;
+      stroke: none;
+
+      path {
+        fill: var(--gold);
+      }
+    }
+  }
+
+  .diff-content {
+    max-width: 640px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  h3 {
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--orange);
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 17px;
+    margin: 0;
   }
 }
 

@@ -7,6 +7,14 @@
     display: none;
   }
 
+  .nav-order-btn {
+    display: none;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
   .hero {
     height: auto;
   }
@@ -81,6 +89,24 @@
     grid-template-columns: 1fr;
   }
 
+  .diff-card--highlight {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    .diff-icon {
+      align-self: center;
+
+      svg {
+        max-height: 100px;
+      }
+    }
+
+    .diff-content {
+      align-items: center;
+    }
+  }
+
   .footer-top {
     grid-template-columns: 1fr;
   }
@@ -94,7 +120,7 @@
     height: 400px;
   }
 
-  .catering {
+  .catering-content {
     padding: 52px 24px;
   }
 
@@ -117,6 +143,17 @@
   .catering-form {
     &__row {
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-bottom {
+    grid-template-columns: 1fr;
+
+    p:nth-child(2),
+    p:last-child {
+      text-align: left;
     }
   }
 }
