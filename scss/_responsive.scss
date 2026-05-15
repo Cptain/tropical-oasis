@@ -33,9 +33,27 @@
     gap: 10px;
 
     .btn {
-      flex: 1;
+      flex: 1 1 0%;
+      min-width: 0;
       text-align: center;
       padding: 12px 16px;
+    }
+
+    &__story {
+      display: none;
+    }
+
+    &__catering {
+      display: block;
+      flex: 1 1 0%;
+      min-width: 0;
+
+      span {
+        text-align: center;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 11px 16px;
+      }
     }
   }
 
@@ -143,6 +161,18 @@
   .catering-form {
     &__row {
       grid-template-columns: 1fr;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .hero-cta {
+    flex-direction: column;
+
+    .btn,
+    &__catering {
+      flex: none;
+      width: 100%;
     }
   }
 }

@@ -141,6 +141,10 @@
   gap: 16px;
   flex-wrap: wrap;
 
+  &__catering {
+    display: none;
+  }
+
   .btn-sunset {
     background: linear-gradient(135deg, #fff, var(--text-light), #d4c4a8, #b8a88a);
     background-size: 300% 300%;
