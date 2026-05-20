@@ -290,6 +290,35 @@
   <script>lucide.createIcons();</script>
   <script>
     (function () {
+      var cateringForm = document.querySelector('.catering-form');
+      if (cateringForm) {
+        var submitBtn = cateringForm.querySelector('[type="submit"]');
+        var originalHTML = submitBtn.innerHTML;
+        var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-left:8px"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        cateringForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var data = new URLSearchParams(new FormData(cateringForm)).toString();
+          fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: data
+          }).then(function () {
+            cateringForm.reset();
+            submitBtn.innerHTML = 'Request Sent' + checkIcon;
+            submitBtn.classList.add('btn--success');
+            submitBtn.disabled = true;
+            setTimeout(function () {
+              submitBtn.innerHTML = originalHTML;
+              submitBtn.classList.remove('btn--success');
+              submitBtn.disabled = false;
+            }, 10000);
+          }).catch(function () {
+            alert('Something went wrong. Please try again.');
+          });
+        });
+      }
+    })();
+    (function () {
       var hamburger = document.querySelector('.nav-hamburger');
       var mobileMenu = document.getElementById('nav-mobile');
       hamburger.addEventListener('click', function () {

@@ -61,6 +61,11 @@ p, h1, h2, h3, h4, h5, h6, li, span, a, label {
   transition: background-position 0.4s ease, color 0.25s, border-color 0.25s;
 }
 
+@keyframes btn-success-in {
+  from { opacity: 0.5; transform: scale(0.97); }
+  to   { opacity: 1;   transform: scale(1); }
+}
+
 .btn-sunset {
   background: linear-gradient(135deg, var(--orange), var(--coral), var(--purple), var(--orange));
   background-size: 300% 300%;
@@ -70,6 +75,12 @@ p, h1, h2, h3, h4, h5, h6, li, span, a, label {
 
   &:hover {
     background-position: 25% 50%;
+  }
+
+  &.btn--success {
+    background-position: 100% 50%;
+    pointer-events: none;
+    animation: btn-success-in 0.4s ease forwards;
   }
 }
 
