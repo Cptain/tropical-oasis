@@ -66,6 +66,11 @@ p, h1, h2, h3, h4, h5, h6, li, span, a, label {
   to   { opacity: 1;   transform: scale(1); }
 }
 
+@keyframes btn-success-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(28, 122, 67, 0.65), 0 4px 22px rgba(28, 122, 67, 0.3); }
+  50%       { box-shadow: 0 0 22px rgba(28, 122, 67, 0.9), 0 4px 36px rgba(28, 122, 67, 0.5); }
+}
+
 .btn-sunset {
   background: linear-gradient(135deg, var(--orange), var(--coral), var(--purple), var(--orange));
   background-size: 300% 300%;
@@ -78,11 +83,13 @@ p, h1, h2, h3, h4, h5, h6, li, span, a, label {
   }
 
   &.btn--success {
-    background: linear-gradient(135deg, #1a8f52, #25a96a, #1a8f52);
+    background: linear-gradient(135deg, #155e32, #1c7a43, #155e32);
     background-size: 200% 200%;
     background-position: 0% 50%;
+    border-color: rgba(255, 255, 255, 0.75);
     pointer-events: none;
-    animation: btn-success-in 0.4s ease forwards;
+    animation: btn-success-in 0.4s ease forwards,
+               btn-success-glow 2s ease-in-out 0.4s infinite;
   }
 }
 

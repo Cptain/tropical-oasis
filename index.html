@@ -10,6 +10,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="dist/main.min.css" />
   <link rel="preload" as="image" href="images/16.webp" fetchpriority="high" />
+  <script defer src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="js/main.js"></script>
+  <script defer src="js/catering-form.js"></script>
+  <script defer src="js/nav.js"></script>
 </head>
 <body>
 
@@ -221,38 +225,53 @@
       <div class="catering-form__row">
         <div class="catering-form__field">
           <label for="catering-name">Name</label>
-          <input type="text" id="catering-name" name="name" placeholder="Your full name" required />
+          <input type="text" id="catering-name" name="name" placeholder="Your full name" required minlength="2" autocomplete="name" />
+          <span class="catering-form__error" aria-live="polite"></span>
         </div>
         <div class="catering-form__field">
           <label for="catering-email">Email</label>
           <input type="email" id="catering-email" name="email" placeholder="your@email.com" required />
+          <span class="catering-form__error" aria-live="polite"></span>
         </div>
       </div>
       <div class="catering-form__row">
         <div class="catering-form__field">
-          <label for="catering-phone">Phone</label>
-          <input type="tel" id="catering-phone" name="phone" placeholder="(416) 000-0000" required />
+          <label for="catering-phone-local">Phone</label>
+          <input type="tel" id="catering-phone-local" name="phone" placeholder="(000) 000-0000" required autocomplete="tel-national" maxlength="14" />
+          <span class="catering-form__error" aria-live="polite"></span>
         </div>
         <div class="catering-form__field">
           <label for="catering-date">Event Date</label>
-          <input type="date" id="catering-date" name="date" />
+          <div class="catering-form__input-wrap catering-form__input-wrap--date">
+            <input type="date" id="catering-date" name="date" />
+            <button type="button" class="catering-form__date-btn" tabindex="-1" aria-label="Open date picker"></button>
+          </div>
+          <span class="catering-form__error" aria-live="polite"></span>
         </div>
       </div>
       <div class="catering-form__row">
         <div class="catering-form__field">
           <label for="catering-guests">Number of Guests</label>
-          <input type="number" id="catering-guests" name="guests" placeholder="e.g. 50" min="1" />
+          <div class="catering-form__input-wrap catering-form__input-wrap--spinners">
+            <input type="number" id="catering-guests" name="guests" placeholder="e.g. 50" min="1" required />
+            <button type="button" class="catering-form__spin catering-form__spin--up" aria-label="Increase guests" tabindex="-1"></button>
+            <button type="button" class="catering-form__spin catering-form__spin--down" aria-label="Decrease guests" tabindex="-1"></button>
+          </div>
+          <span class="catering-form__error" aria-live="polite"></span>
         </div>
         <div class="catering-form__field">
           <label for="catering-type">Event Type</label>
-          <select id="catering-type" name="type">
-            <option value="" disabled selected>Select event type</option>
-            <option value="wedding">Wedding</option>
-            <option value="birthday">Birthday Party</option>
-            <option value="corporate">Corporate Event</option>
-            <option value="family">Family Gathering</option>
-            <option value="other">Other</option>
-          </select>
+          <div class="catering-form__input-wrap catering-form__input-wrap--select">
+            <select id="catering-type" name="type" required>
+              <option value="" disabled selected>Select event type</option>
+              <option value="wedding">Wedding</option>
+              <option value="birthday">Birthday Party</option>
+              <option value="corporate">Corporate Event</option>
+              <option value="family">Family Gathering</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <span class="catering-form__error" aria-live="polite"></span>
         </div>
       </div>
       <div class="catering-form__field catering-form__field--full">
@@ -286,96 +305,6 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <script>lucide.createIcons();</script>
-  <script>
-    (function () {
-      var cateringForm = document.querySelector('.catering-form');
-      if (cateringForm) {
-        var dateInput = document.getElementById('catering-date');
-        if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
-        if (dateInput) {
-          var yearAutoSet = false;
-          dateInput.addEventListener('focus', function () {
-            if (!dateInput.value && !yearAutoSet) {
-              dateInput.value = new Date().toISOString().split('T')[0];
-              yearAutoSet = true;
-            }
-          });
-          dateInput.addEventListener('input', function () {
-            dateInput.setCustomValidity('');
-            if (dateInput.value && !yearAutoSet) {
-              var currentYear = new Date().getFullYear();
-              var parts = dateInput.value.split('-');
-              var enteredYear = parseInt(parts[0], 10);
-              yearAutoSet = true;
-              if (enteredYear !== currentYear && enteredYear !== currentYear + 1) {
-                dateInput.value = currentYear + '-' + parts[1] + '-' + parts[2];
-              }
-            }
-          });
-        }
-        var submitBtn = cateringForm.querySelector('[type="submit"]');
-        var originalHTML = submitBtn.innerHTML;
-        var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-left:8px"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-        cateringForm.addEventListener('submit', function (e) {
-          e.preventDefault();
-          if (dateInput && dateInput.value) {
-            var now = new Date();
-            var today = now.toISOString().split('T')[0];
-            var currentYear = now.getFullYear();
-            var enteredYear = parseInt(dateInput.value.split('-')[0], 10);
-            if (dateInput.value < today) {
-              dateInput.setCustomValidity('Please select a future date.');
-              dateInput.reportValidity();
-              return;
-            }
-            if (enteredYear !== currentYear && enteredYear !== currentYear + 1) {
-              dateInput.setCustomValidity('Please select a date in ' + currentYear + ' or ' + (currentYear + 1) + '.');
-              dateInput.reportValidity();
-              return;
-            }
-          }
-          dateInput && dateInput.setCustomValidity('');
-          var data = new URLSearchParams(new FormData(cateringForm)).toString();
-          fetch('/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: data
-          }).then(function () {
-            cateringForm.reset();
-            submitBtn.innerHTML = 'Request Sent' + checkIcon;
-            submitBtn.classList.add('btn--success');
-            submitBtn.disabled = true;
-            setTimeout(function () {
-              submitBtn.innerHTML = originalHTML;
-              submitBtn.classList.remove('btn--success');
-              submitBtn.disabled = false;
-            }, 10000);
-          }).catch(function () {
-            alert('Something went wrong. Please try again.');
-          });
-        });
-      }
-    })();
-    (function () {
-      var hamburger = document.querySelector('.nav-hamburger');
-      var mobileMenu = document.getElementById('nav-mobile');
-      hamburger.addEventListener('click', function () {
-        var open = !mobileMenu.classList.contains('is-open');
-        mobileMenu.classList.toggle('is-open', open);
-        hamburger.setAttribute('aria-expanded', open);
-        document.body.style.overflow = open ? 'hidden' : '';
-      });
-      mobileMenu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          mobileMenu.classList.remove('is-open');
-          hamburger.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
-      });
-    })();
-  </script>
 
 </body>
 </html>
