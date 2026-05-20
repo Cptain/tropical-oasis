@@ -231,7 +231,7 @@
       <div class="catering-form__row">
         <div class="catering-form__field">
           <label for="catering-phone">Phone</label>
-          <input type="tel" id="catering-phone" name="phone" placeholder="(416) 000-0000" />
+          <input type="tel" id="catering-phone" name="phone" placeholder="(416) 000-0000" required />
         </div>
         <div class="catering-form__field">
           <label for="catering-date">Event Date</label>
@@ -292,11 +292,51 @@
     (function () {
       var cateringForm = document.querySelector('.catering-form');
       if (cateringForm) {
+        var dateInput = document.getElementById('catering-date');
+        if (dateInput) dateInput.min = new Date().toISOString().split('T')[0];
+        if (dateInput) {
+          var yearAutoSet = false;
+          dateInput.addEventListener('focus', function () {
+            if (!dateInput.value && !yearAutoSet) {
+              dateInput.value = new Date().toISOString().split('T')[0];
+              yearAutoSet = true;
+            }
+          });
+          dateInput.addEventListener('input', function () {
+            dateInput.setCustomValidity('');
+            if (dateInput.value && !yearAutoSet) {
+              var currentYear = new Date().getFullYear();
+              var parts = dateInput.value.split('-');
+              var enteredYear = parseInt(parts[0], 10);
+              yearAutoSet = true;
+              if (enteredYear !== currentYear && enteredYear !== currentYear + 1) {
+                dateInput.value = currentYear + '-' + parts[1] + '-' + parts[2];
+              }
+            }
+          });
+        }
         var submitBtn = cateringForm.querySelector('[type="submit"]');
         var originalHTML = submitBtn.innerHTML;
         var checkIcon = '<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-left:8px"><polyline points="20 6 9 17 4 12"></polyline></svg>';
         cateringForm.addEventListener('submit', function (e) {
           e.preventDefault();
+          if (dateInput && dateInput.value) {
+            var now = new Date();
+            var today = now.toISOString().split('T')[0];
+            var currentYear = now.getFullYear();
+            var enteredYear = parseInt(dateInput.value.split('-')[0], 10);
+            if (dateInput.value < today) {
+              dateInput.setCustomValidity('Please select a future date.');
+              dateInput.reportValidity();
+              return;
+            }
+            if (enteredYear !== currentYear && enteredYear !== currentYear + 1) {
+              dateInput.setCustomValidity('Please select a date in ' + currentYear + ' or ' + (currentYear + 1) + '.');
+              dateInput.reportValidity();
+              return;
+            }
+          }
+          dateInput && dateInput.setCustomValidity('');
           var data = new URLSearchParams(new FormData(cateringForm)).toString();
           fetch('/', {
             method: 'POST',

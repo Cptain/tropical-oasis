@@ -78,7 +78,9 @@ p, h1, h2, h3, h4, h5, h6, li, span, a, label {
   }
 
   &.btn--success {
-    background-position: 100% 50%;
+    background: linear-gradient(135deg, #1a8f52, #25a96a, #1a8f52);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
     pointer-events: none;
     animation: btn-success-in 0.4s ease forwards;
   }
